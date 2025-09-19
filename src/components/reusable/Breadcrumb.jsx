@@ -1,12 +1,14 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSidebar } from "../../providers/SidebarProvider";
+
 const Breadcrumb = () => {
   const { isCollapsed } = useSidebar();
-  let location = useLocation();
+  const location = useLocation();
 
-  // Logic to generate breadcrumb items based on the current location
-  // This is a placeholder and should be replaced with actual logic
-  const pathnames = location.pathname.split("/").filter((x) => x);
+  // Remove "dashboard" from the pathnames
+  const pathnames = location.pathname
+    .split("/")
+    .filter((x) => x && x !== "dashboard");
 
   return (
     <div
@@ -14,13 +16,25 @@ const Breadcrumb = () => {
         isCollapsed ? "flex" : "hidden"
       }`}
     >
-      {pathnames.length > 0 ? (
-        <span className="text-neutral-400 capitalize">
-          {pathnames.join(" > ")}
-        </span>
-      ) : (
-        <span className="text-neutral-400">/ Home</span>
-      )}
+      {pathnames.map((name, index) => {
+        const routeTo = `/dashboard/${pathnames.slice(0, index + 1).join("/")}`;
+        const isLast = index === pathnames.length - 1;
+
+        return (
+          <span key={routeTo} className="flex items-center gap-1">
+            {/* Only show ">" if not the first item */}
+            {index !== 0 && <span className="text-neutral-400"> &gt; </span>}
+
+            {isLast ? (
+              <span className="capitalize text-neutral-400">{name}</span>
+            ) : (
+              <Link to={routeTo} className="capitalize hover:underline">
+                {name}
+              </Link>
+            )}
+          </span>
+        );
+      })}
     </div>
   );
 };
