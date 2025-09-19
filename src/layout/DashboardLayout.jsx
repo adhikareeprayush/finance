@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "../components/sidebar/Sidebar";
 import Nav from "../components/nav/Nav";
 import { SidebarProvider } from "../providers/SidebarProvider";
-import Breadcrumb from "../components/resuable/Breadcrumb";
+import Breadcrumb from "../components/reusable/Breadcrumb";
 
 const DashboardLayout = () => {
   return (

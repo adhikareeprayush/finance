@@ -1,12 +1,33 @@
 import { ICONS } from "../../assets/Assets";
 import { useTheme } from "../../providers/ThemeProvider";
 import { IoMoon, IoSunny } from "react-icons/io5";
-import Dropdown from "../resuable/Dropdown";
-import { useState } from "react";
+import Dropdown from "../reusable/Dropdown";
+import { useState, useEffect, useRef } from "react";
+import SearchModal from "../reusable/SearchModal";
+import SearchInput from "../reusable/SearchInput";
 
 const Nav = () => {
   const { theme, toggleTheme } = useTheme();
   const [profileExpand, setProfileExpand] = useState(false);
+  const [searchModal, setSearchModal] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Click outside to close dropdown
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setProfileExpand(false);
+      }
+    };
+
+    if (profileExpand) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [profileExpand]);
   return (
     <div className="w-full flex justify-between py-4 px-6 border-b-[1px] border-[#eaeaea] dark:border-neutral-800 dark:bg-[#181818] dark:text-neutral-300">
       <div className="flex items-center gap-3">
@@ -19,16 +40,15 @@ const Nav = () => {
       </div>
       <div className="flex items-center">
         <div className="flex items-center gap-2">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="bg-neutral-100 dark:bg-neutral-950 shadow-xs border-[1px] border-neutral-100 dark:border-neutral-800 rounded-md px-4 py-1.5 focus:border-0 focus:outline-none text-neutral-600 dark:text-neutral-300 placeholder:text-neutral-500 text-base"
-          />
+          <SearchInput />
         </div>
         <button onClick={toggleTheme} className="px-3 py-1 rounded-md text-2xl">
           {theme === "light" ? <IoMoon /> : <IoSunny />}
         </button>
-        <div className="relative flex items-center justify-center p-[1px] w-[42px] h-[42px] rounded-full bg-neutral-400 dark:border-neutral-800">
+        <div
+          className="relative flex items-center justify-center p-[1px] w-[42px] h-[42px] rounded-full bg-neutral-400 dark:border-neutral-800"
+          ref={dropdownRef}
+        >
           <button
             onClick={() => {
               setProfileExpand((prev) => !prev);

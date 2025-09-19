@@ -10,7 +10,7 @@ const Breadcrumb = () => {
 
   return (
     <div
-      className={`items-center gap-2 text-base text-dark dark:text-neutral-400 ${
+      className={`items-center gap-2 text-base text-dark dark:text-neutral-400 mb-4 ${
         isCollapsed ? "flex" : "hidden"
       }`}
     >

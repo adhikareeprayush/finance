@@ -3,6 +3,9 @@ import { GoSidebarCollapse, GoSidebarExpand } from "react-icons/go";
 import { useSidebar } from "../../providers/SidebarProvider";
 import { Link } from "react-router-dom";
 import { MdFormatListBulleted, MdInsights, MdMoney } from "react-icons/md";
+import { CgTranscript } from "react-icons/cg";
+import { FaCalculator } from "react-icons/fa";
+import { BsPieChartFill } from "react-icons/bs";
 
 const navMenus = [
   {
@@ -22,6 +25,24 @@ const navMenus = [
     label: "Earnings",
     icon: <MdMoney />,
     url: "earnings",
+  },
+  {
+    id: 4,
+    label: "Transcripts",
+    icon: <CgTranscript />,
+    url: "transcripts",
+  },
+  {
+    id: 5,
+    label: "DCF Calculator",
+    icon: <FaCalculator />,
+    url: "dcf-calculator",
+  },
+  {
+    id: 6,
+    label: "Portfolios",
+    icon: <BsPieChartFill />,
+    url: "portfolios",
   },
 ];
 
