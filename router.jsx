@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Login from "./src/pages/Login";
 import DashboardLayout from "./src/layout/DashboardLayout";
-import Insight from "./src/pages/Insight";
+import Insight from "./src/pages/insight/Insight";
 
 const router = new createBrowserRouter([
   {
