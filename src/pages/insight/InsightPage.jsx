@@ -111,11 +111,62 @@ const InsightPage = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex items-center gap-2 text-neutral-600 dark:text-neutral-500">
-        <img src={company.logo} alt="" />
-        <div className="flex flex-col">
-          <h2 className="text-2xl font-semibold">{company.name}</h2>
-          <p className="text-base">{company.symbol}</p>
+      <div className="flex flex-col gap-2 text-neutral-600 dark:text-neutral-500">
+        <div className="flex items-center gap-2">
+          <img src={company.logo} alt="" />
+          <div className="flex flex-col">
+            <h2 className="text-2xl font-semibold dark:text-neutral-200">
+              {company.name}
+            </h2>
+            <p className="text-base">{company.symbol}</p>
+          </div>
+        </div>
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-2">
+            <h2 className="font-semibold text-xl text-neutral-600 dark:text-neutral-400">
+              {company.price}
+            </h2>
+            <p
+              className={`text-sm text-center w-fit px-2 py-1 rounded-lg ${
+                company.changePercent && company.changePercent.startsWith("-")
+                  ? "bg-red-500/50 text-red-100"
+                  : "bg-primary/50 text-white"
+              }`}
+            >
+              {company.changePercent || "0.00%"}$ |{" "}
+              {Math.abs(
+                (parseFloat(company.changePercent) / 100) *
+                  parseFloat(company.price.replace("$", ""))
+              ).toFixed(2)}
+              {company.changePercent}
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <p>After Hours</p>{" "}
+            <div className="flex items-center">
+              <h2 className="font-semibold text-base text-neutral-600 dark:text-neutral-400">
+                {company.price}
+              </h2>
+              <p
+                className={`text-sm text-center w-fit px-2 py-1 rounded-lg ${
+                  company.changePercent && company.changePercent.startsWith("-")
+                    ? " text-red-700"
+                    : " text-white"
+                }`}
+              >
+                {company.changePercent || "0.00%"}$ |{" "}
+                {Math.abs(
+                  (parseFloat(company.changePercent) / 100) *
+                    parseFloat(company.price.replace("$", ""))
+                ).toFixed(2)}
+                {company.changePercent}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <p className="text-neutral-600 dark:text-neutral-300">Earnings</p>
+            <p className="text-primary">Nov 19, 2025</p>
+          </div>
         </div>
       </div>
     </div>
