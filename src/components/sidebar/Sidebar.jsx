@@ -9,19 +9,19 @@ const navMenus = [
     id: 1,
     label: "Insights",
     icon: <MdInsights />,
-    url: "/dashboard",
+    url: "insight",
   },
   {
     id: 2,
     label: "Watchlists",
     icon: <MdFormatListBulleted />,
-    url: "/watchlists",
+    url: "watchlists",
   },
   {
     id: 3,
     label: "Earnings",
     icon: <MdMoney />,
-    url: "/earnings",
+    url: "earnings",
   },
 ];
 
