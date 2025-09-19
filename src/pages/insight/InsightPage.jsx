@@ -1,4 +1,6 @@
 import { useParams } from "react-router-dom";
+import Graph from "../../components/reusable/Graphs/Graph";
+import GraphContainer from "../../components/reusable/Graphs/GraphContainer";
 
 const companiesdata = [
   {
@@ -169,6 +171,7 @@ const InsightPage = () => {
           </div>
         </div>
       </div>
+      <GraphContainer />
     </div>
   );
 };
