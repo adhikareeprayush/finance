@@ -60,6 +60,41 @@
         "Professional Visualization": 1100000000,
         "Automotive": 500000000,
         "OEM & Other": 500000000
+      },
+      "2022-Q1": {
+        "Gaming": 2700000000,
+        "Data Center": 2250000000,
+        "Professional Visualization": 990000000,
+        "Automotive": 450000000,
+        "OEM & Other": 450000000
+      },
+      "2021-Q4": {
+        "Gaming": 2430000000,
+        "Data Center": 2025000000,
+        "Professional Visualization": 891000000,
+        "Automotive": 405000000,
+        "OEM & Other": 405000000
+      },
+      "2021-Q3": {
+        "Gaming": 2187000000,
+        "Data Center": 1822500000,
+        "Professional Visualization": 801900000,
+        "Automotive": 364500000,
+        "OEM & Other": 364500000
+      },
+      "2021-Q2": {
+        "Gaming": 1968300000,
+        "Data Center": 1640250000,
+        "Professional Visualization": 721710000,
+        "Automotive": 328050000,
+        "OEM & Other": 328050000
+      },
+      "2021-Q1": {
+        "Gaming": 1771470000,
+        "Data Center": 1476225000,
+        "Professional Visualization": 649539000,
+        "Automotive": 295245000,
+        "OEM & Other": 295245000
       }
     },
     "EBITA": {
@@ -152,6 +187,76 @@
         "debtToEquity": 0.15,
         "returnOnAssets": 13.0,
         "returnOnEquity": 17.0
+      },
+      "2022-Q3": {
+        "grossMargin": 62.0,
+        "operatingMargin": 39.0,
+        "netMargin": 26.0,
+        "currentRatio": 2.2,
+        "quickRatio": 1.7,
+        "debtToEquity": 0.16,
+        "returnOnAssets": 12.5,
+        "returnOnEquity": 16.5
+      },
+      "2022-Q2": {
+        "grossMargin": 61.0,
+        "operatingMargin": 37.5,
+        "netMargin": 24.0,
+        "currentRatio": 2.1,
+        "quickRatio": 1.6,
+        "debtToEquity": 0.17,
+        "returnOnAssets": 12.0,
+        "returnOnEquity": 16.0
+      },
+      "2022-Q1": {
+        "grossMargin": 60.0,
+        "operatingMargin": 36.0,
+        "netMargin": 22.0,
+        "currentRatio": 2.0,
+        "quickRatio": 1.5,
+        "debtToEquity": 0.18,
+        "returnOnAssets": 11.5,
+        "returnOnEquity": 15.5
+      },
+      "2021-Q4": {
+        "grossMargin": 59.0,
+        "operatingMargin": 34.5,
+        "netMargin": 20.0,
+        "currentRatio": 1.9,
+        "quickRatio": 1.4,
+        "debtToEquity": 0.19,
+        "returnOnAssets": 11.0,
+        "returnOnEquity": 15.0
+      },
+      "2021-Q3": {
+        "grossMargin": 58.0,
+        "operatingMargin": 33.0,
+        "netMargin": 18.0,
+        "currentRatio": 1.8,
+        "quickRatio": 1.3,
+        "debtToEquity": 0.2,
+        "returnOnAssets": 10.5,
+        "returnOnEquity": 14.5
+      },
+      "2021-Q2": {
+        "grossMargin": 57.0,
+        "operatingMargin": 31.5,
+        "netMargin": 16.0,
+        "currentRatio": 1.7,
+        "quickRatio": 1.2,
+        "debtToEquity": 0.21,
+        "returnOnAssets": 10.0,
+        "returnOnEquity": 14.0
+      },
+      "2021-Q1": {
+        "grossMargin": 56.0,
+        "operatingMargin": 30.0,
+        "netMargin": 14.0,
+        "currentRatio": 1.6,
+        "quickRatio": 1.1,
+        "debtToEquity": 0.22,
+        "returnOnAssets": 9.5,
+        "returnOnEquity": 13.5
       }
     },
     "Valuation": {
@@ -175,6 +280,55 @@
         "psRatio": 13.0,
         "evToEbitda": 40.0,
         "evToRevenue": 17.0
+      },
+      "2022-Q3": {
+        "peRatio": 135.0,
+        "pbRatio": 20.0,
+        "psRatio": 12.0,
+        "evToEbitda": 36.0,
+        "evToRevenue": 15.5
+      },
+      "2022-Q2": {
+        "peRatio": 121.5,
+        "pbRatio": 18.0,
+        "psRatio": 11.0,
+        "evToEbitda": 32.4,
+        "evToRevenue": 14.0
+      },
+      "2022-Q1": {
+        "peRatio": 109.4,
+        "pbRatio": 16.2,
+        "psRatio": 9.9,
+        "evToEbitda": 29.2,
+        "evToRevenue": 12.6
+      },
+      "2021-Q4": {
+        "peRatio": 98.5,
+        "pbRatio": 14.6,
+        "psRatio": 8.9,
+        "evToEbitda": 26.3,
+        "evToRevenue": 11.3
+      },
+      "2021-Q3": {
+        "peRatio": 88.7,
+        "pbRatio": 13.1,
+        "psRatio": 8.0,
+        "evToEbitda": 23.7,
+        "evToRevenue": 10.2
+      },
+      "2021-Q2": {
+        "peRatio": 79.8,
+        "pbRatio": 11.8,
+        "psRatio": 7.2,
+        "evToEbitda": 21.3,
+        "evToRevenue": 9.2
+      },
+      "2021-Q1": {
+        "peRatio": 71.8,
+        "pbRatio": 10.6,
+        "psRatio": 6.5,
+        "evToEbitda": 19.2,
+        "evToRevenue": 8.3
       }
     },
     "Expenses": {
@@ -195,6 +349,48 @@
         "researchAndDevelopment": 2000000000,
         "sellingGeneralAndAdmin": 1200000000,
         "operatingExpenses": 3200000000
+      },
+      "2022-Q3": {
+        "costOfRevenue": 3563100000,
+        "researchAndDevelopment": 1800000000,
+        "sellingGeneralAndAdmin": 1080000000,
+        "operatingExpenses": 2880000000
+      },
+      "2022-Q2": {
+        "costOfRevenue": 3206790000,
+        "researchAndDevelopment": 1620000000,
+        "sellingGeneralAndAdmin": 972000000,
+        "operatingExpenses": 2592000000
+      },
+      "2022-Q1": {
+        "costOfRevenue": 2886111000,
+        "researchAndDevelopment": 1458000000,
+        "sellingGeneralAndAdmin": 874800000,
+        "operatingExpenses": 2332800000
+      },
+      "2021-Q4": {
+        "costOfRevenue": 2597499900,
+        "researchAndDevelopment": 1312200000,
+        "sellingGeneralAndAdmin": 787320000,
+        "operatingExpenses": 2099520000
+      },
+      "2021-Q3": {
+        "costOfRevenue": 2337749910,
+        "researchAndDevelopment": 1180980000,
+        "sellingGeneralAndAdmin": 708588000,
+        "operatingExpenses": 1889568000
+      },
+      "2021-Q2": {
+        "costOfRevenue": 2103974919,
+        "researchAndDevelopment": 1062882000,
+        "sellingGeneralAndAdmin": 637729200,
+        "operatingExpenses": 1700611200
+      },
+      "2021-Q1": {
+        "costOfRevenue": 1893577427,
+        "researchAndDevelopment": 956593800,
+        "sellingGeneralAndAdmin": 573956280,
+        "operatingExpenses": 1530550080
       }
     }
   }
