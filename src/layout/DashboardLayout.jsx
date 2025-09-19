@@ -7,11 +7,11 @@ import Breadcrumb from "../components/reusable/Breadcrumb";
 const DashboardLayout = () => {
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex flex-col h-full dark:bg-[#212121]">
+      <div className="min-h-screen max-h-screen h-screen flex flex-col  dark:bg-[#212121]">
         <Nav />
-        <div className="flex w-full h-full flex-1">
+        <div className="flex w-full flex-1">
           <Sidebar />
-          <main className="flex-1 mx-3 my-4">
+          <main className="flex-1 mx-3 my-4 overflow-y-auto max-h-full">
             <Breadcrumb />
             <Outlet />
           </main>

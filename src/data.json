@@ -12,6 +12,190 @@
       "2021-Q3": 208.16,
       "2021-Q2": 195.55,
       "2021-Q1": 139.96
+    },
+    "revenue": {
+      "2023-Q2": 13500000000,
+      "2023-Q1": 10600000000,
+      "2022-Q4": 10700000000,
+      "2022-Q3": 8900000000,
+      "2022-Q2": 6600000000,
+      "2022-Q1": 5800000000,
+      "2021-Q4": 7600000000,
+      "2021-Q3": 6600000000,
+      "2021-Q2": 6200000000,
+      "2021-Q1": 5600000000
+    },
+    "revenueBySegment": {
+      "2023-Q2": {
+        "Gaming": 6000000000,
+        "Data Center": 5000000000,
+        "Professional Visualization": 1500000000,
+        "Automotive": 1000000000,
+        "OEM & Other": 1000000000
+      },
+      "2023-Q1": {
+        "Gaming": 4500000000,
+        "Data Center": 4000000000,
+        "Professional Visualization": 1200000000,
+        "Automotive": 800000000,
+        "OEM & Other": 800000000
+      },
+      "2022-Q4": {
+        "Gaming": 4000000000,
+        "Data Center": 3500000000,
+        "Professional Visualization": 1300000000,
+        "Automotive": 700000000,
+        "OEM & Other": 800000000
+      },
+      "2022-Q3": {
+        "Gaming": 3500000000,
+        "Data Center": 3000000000,
+        "Professional Visualization": 1200000000,
+        "Automotive": 600000000,
+        "OEM & Other": 700000000
+      },
+      "2022-Q2": {
+        "Gaming": 3000000000,
+        "Data Center": 2500000000,
+        "Professional Visualization": 1100000000,
+        "Automotive": 500000000,
+        "OEM & Other": 500000000
+      }
+    },
+    "ebita": {
+      "2023-Q2": 6000000000,
+      "2023-Q1": 4500000000,
+      "2022-Q4": 4000000000,
+      "2022-Q3": 3500000000,
+      "2022-Q2": 3000000000,
+      "2022-Q1": 2800000000,
+      "2021-Q4": 3500000000,
+      "2021-Q3": 3000000000,
+      "2021-Q2": 2800000000,
+      "2021-Q1": 2500000000
+    },
+    "netIncome": {
+      "2023-Q2": 4500000000,
+      "2023-Q1": 3500000000,
+      "2022-Q4": 3000000000,
+      "2022-Q3": 2500000000,
+      "2022-Q2": 2200000000,
+      "2022-Q1": 2000000000,
+      "2021-Q4": 2800000000,
+      "2021-Q3": 2400000000,
+      "2021-Q2": 2200000000,
+      "2021-Q1": 2000000000
+    },
+    "freeCashFlow": {
+      "2023-Q2": 3500000000,
+      "2023-Q1": 3000000000,
+      "2022-Q4": 2500000000,
+      "2022-Q3": 2000000000,
+      "2022-Q2": 1800000000,
+      "2022-Q1": 1600000000,
+      "2021-Q4": 2200000000,
+      "2021-Q3": 2000000000,
+      "2021-Q2": 1800000000,
+      "2021-Q1": 1500000000
+    },
+    "eps": {
+      "2023-Q2": 1.5,
+      "2023-Q1": 1.2,
+      "2022-Q4": 1.0,
+      "2022-Q3": 0.8,
+      "2022-Q2": 0.7,
+      "2022-Q1": 0.6,
+      "2021-Q4": 0.9,
+      "2021-Q3": 0.75,
+      "2021-Q2": 0.7,
+      "2021-Q1": 0.65
+    },
+    "sharesOutstanding": {
+      "2023-Q2": 3000000000,
+      "2023-Q1": 2900000000,
+      "2022-Q4": 2800000000,
+      "2022-Q3": 2750000000,
+      "2022-Q2": 2700000000,
+      "2022-Q1": 2650000000,
+      "2021-Q4": 2600000000,
+      "2021-Q3": 2550000000,
+      "2021-Q2": 2500000000,
+      "2021-Q1": 2450000000
+    },
+    "ratios": {
+      "2023-Q2": {
+        "grossMargin": 65.0,
+        "operatingMargin": 44.4,
+        "netMargin": 33.3,
+        "currentRatio": 2.5,
+        "quickRatio": 2.0,
+        "debtToEquity": 0.1,
+        "returnOnAssets": 15.0,
+        "returnOnEquity": 20.0
+      },
+      "2023-Q1": {
+        "grossMargin": 64.0,
+        "operatingMargin": 42.5,
+        "netMargin": 30.2,
+        "currentRatio": 2.4,
+        "quickRatio": 1.9,
+        "debtToEquity": 0.12,
+        "returnOnAssets": 14.0,
+        "returnOnEquity": 18.0
+      },
+      "2022-Q4": {
+        "grossMargin": 63.0,
+        "operatingMargin": 40.5,
+        "netMargin": 28.0,
+        "currentRatio": 2.3,
+        "quickRatio": 1.8,
+        "debtToEquity": 0.15,
+        "returnOnAssets": 13.0,
+        "returnOnEquity": 17.0
+      }
+    },
+    "valuation": {
+      "2023-Q2": {
+        "peRatio": 180.0,
+        "pbRatio": 25.0,
+        "psRatio": 15.0,
+        "evToEbitda": 50.0,
+        "evToRevenue": 20.0
+      },
+      "2023-Q1": {
+        "peRatio": 160.0,
+        "pbRatio": 23.0,
+        "psRatio": 14.0,
+        "evToEbitda": 45.0,
+        "evToRevenue": 18.0
+      },
+      "2022-Q4": {
+        "peRatio": 150.0,
+        "pbRatio": 22.0,
+        "psRatio": 13.0,
+        "evToEbitda": 40.0,
+        "evToRevenue": 17.0
+      }
+    },
+    "expenses": {
+      "2023-Q2": {
+        "costOfRevenue": 4725000000,
+        "researchAndDevelopment": 2500000000,
+        "sellingGeneralAndAdmin": 1500000000,
+        "operatingExpenses": 4000000000
+      },
+      "2023-Q1": {
+        "costOfRevenue": 3816000000,
+        "researchAndDevelopment": 2200000000,
+        "sellingGeneralAndAdmin": 1300000000,
+        "operatingExpenses": 3500000000
+      },
+      "2022-Q4": {
+        "costOfRevenue": 3959000000,
+        "researchAndDevelopment": 2000000000,
+        "sellingGeneralAndAdmin": 1200000000,
+        "operatingExpenses": 3200000000
+      }
     }
   }
 }

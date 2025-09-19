@@ -1,31 +1,25 @@
 import Chart from "react-apexcharts";
 
-const options = {
-  chart: {
-    type: "line",
-  },
-  series: [
-    {
-      name: "sales",
-      data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
-    },
-  ],
-  xaxis: {
-    categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
-  },
-};
+const Graph = ({
+  type = "line",
+  data = [],
+  categories = [],
+  seriesName = "Series",
+}) => {
+  const options = {
+    chart: { type },
+    xaxis: { categories },
+    stroke: { curve: type === "line" ? "smooth" : "straight" },
+  };
 
-const Graph = () => {
-  return (
-    <div>
-      <Chart
-        options={options}
-        series={options.series}
-        type="line"
-        height={350}
-      />
-    </div>
-  );
+  const series = [
+    {
+      name: seriesName,
+      data,
+    },
+  ];
+
+  return <Chart options={options} series={series} type={type} height={350} />;
 };
 
 export default Graph;
