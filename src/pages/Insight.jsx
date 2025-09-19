@@ -15,8 +15,10 @@ const Insight = () => {
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            className={`text-neutral-400 px-5 py-1 border-[1px] rounded-full border-neutral-700 ${
-              activeTab === tab.id ? "bg-neutral-700" : "bg-transparent"
+            className={`px-5 py-1 border-[1px] rounded-full text-neutral-600 border-neutral-200 dark:border-neutral-700 ${
+              activeTab === tab.id
+                ? "dark:bg-neutral-700 bg-neutral-100 dark:text-neutral-100"
+                : "bg-transparent"
             }`}
             onClick={() => setActiveTab(tab.id)}
           >
