@@ -55,7 +55,7 @@ const Card = ({ company, expand }) => {
         } border-t-[1px] w-full border-neutral-700`}
       >
         <div className="py-2">
-          <p className="font-semibold text-neutral-200 text-center w-full">
+          <p className="font-semibold dark:text-neutral-200 text-neutral-600   text-center w-full">
             Performance
           </p>
           <div className="grid grid-cols-3 gap-3 mt-2">
