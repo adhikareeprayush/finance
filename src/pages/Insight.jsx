@@ -2,9 +2,19 @@ import { useState } from "react";
 import Card from "../components/reusable/Card";
 
 const tabs = [
-  { id: 1, label: "Tab 1" },
+  { id: 1, label: "Technology" },
   { id: 2, label: "Tab 2" },
   { id: 3, label: "Tab 3" },
+];
+
+const companiesdata = [
+  {
+    id: 1,
+    name: "NVIDIA Corporation",
+    symbol: "NVDA",
+    logo: "https://logo.clearbit.com/nvidia.com",
+    sector: "Technology",
+  },
 ];
 
 const Insight = () => {
