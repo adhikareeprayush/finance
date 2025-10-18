@@ -1,15 +1,23 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { ICONS } from "../assets/Assets";
-import { loginUser } from "../lib/auth/auth";
+import { createUser } from "../lib/auth/auth";
 import { useAuth } from "../providers/AuthProvider";
 
-const Login = () => {
-  const [formData, setFormData] = useState({ email: "", password: "" });
+const SignUp = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    agreeToTerms: false,
+  });
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const { login } = useAuth();
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -34,7 +42,7 @@ const Login = () => {
       }
 
       // Attempt login
-      const response = await loginUser(formData);
+      const response = await createUser(formData);
 
       // Update auth context
       await login(response.user, {
@@ -84,6 +92,38 @@ const Login = () => {
               onSubmit={handleSubmit}
               className="flex flex-col gap-3 w-full"
             >
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex flex-col gap-1 w-full">
+                  <label htmlFor="firstName" className="text-xs font-normal">
+                    First Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter your first name"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    disabled={isLoading}
+                    required
+                    className="w-full bg-[#F2F2F2] font-roboto px-3 py-4 rounded-lg text-base leading-5 text-[#808080] disabled:opacity-50"
+                  />
+                </div>
+                <div className="flex flex-col gap-1 w-full">
+                  <label htmlFor="lastName" className="text-xs font-normal">
+                    Last Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter your last name"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    disabled={isLoading}
+                    required
+                    className="w-full bg-[#F2F2F2] font-roboto px-3 py-4 rounded-lg text-base leading-5 text-[#808080] disabled:opacity-50"
+                  />
+                </div>
+              </div>
               <div className="flex flex-col gap-1 w-full">
                 <label htmlFor="email" className="text-xs font-normal">
                   Email
@@ -114,10 +154,42 @@ const Login = () => {
                   className="w-full bg-[#F2F2F2] font-roboto px-3 py-4 rounded-lg text-base leading-5 text-[#808080] disabled:opacity-50"
                 />
               </div>
+              <div className="flex flex-col gap-1 w-full">
+                <label
+                  htmlFor="confirmPassword"
+                  className="text-xs font-normal"
+                >
+                  Confirm Password
+                </label>
+                <input
+                  type="password"
+                  placeholder="Confirm your password"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  disabled={isLoading}
+                  required
+                  className="w-full bg-[#F2F2F2] font-roboto px-3 py-4 rounded-lg text-base leading-5 text-[#808080] disabled:opacity-50"
+                />
+              </div>
               <div className="flex items-center justify-between w-full">
-                <div>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    name="terms"
+                    checked={formData.agreeToTerms}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        agreeToTerms: e.target.checked,
+                      })
+                    }
+                    required
+                    disabled={isLoading}
+                    className="w-4 h-4 rounded-md accent-primary disabled:opacity-50"
+                  />
                   <span className="text-dark text-right text-xs tracking-wide">
-                    Remember me
+                    Agree to terms and conditions
                   </span>
                 </div>
                 <Link
@@ -132,15 +204,18 @@ const Login = () => {
                 disabled={isLoading}
                 className="btn btn-primary w-full rounded-md cursor-pointer bg-primary py-2.5 px-6 font-roboto text-base font-bold tracking-wide leading-5 text-white disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isLoading ? "Signing In..." : "Sign In"}
+                {isLoading ? "Signing Up..." : "Sign Up"}
               </button>
             </form>
             <div className="flex items-center justify-center text-center w-full  gap-1">
               <p className="text-dark text-right text-xs tracking-wide">
-                Don't have an account?
+                Already have an account?
               </p>
-              <Link className="text-primary text-right text-xs tracking-wide">
-                Sign Up Now
+              <Link
+                to="/login"
+                className="text-primary text-right text-xs tracking-wide"
+              >
+                Sign In Now
               </Link>
             </div>
           </div>
@@ -155,4 +230,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

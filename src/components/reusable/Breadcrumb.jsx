@@ -26,9 +26,15 @@ const Breadcrumb = () => {
             {index !== 0 && <span className="text-neutral-400"> &gt; </span>}
 
             {isLast ? (
-              <span className="capitalize text-neutral-400">{name}</span>
+              <span
+                className={`capitalize text-neutral-400  ${
+                  name === "dcf-calculator" ? "uppercase" : ""
+                }`}
+              >
+                {name}
+              </span>
             ) : (
-              <Link to={routeTo} className="capitalize hover:underline">
+              <Link to={routeTo} className={`capitalize hover:underline`}>
                 {name}
               </Link>
             )}

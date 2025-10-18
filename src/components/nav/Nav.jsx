@@ -34,7 +34,7 @@ const Nav = () => {
         <div className="flex items-center gap-2">
           <img src={ICONS.logo} alt="" className="size-12 object-contain" />
           <h3 className="text-xl font-semibold text-dark dark:text-white">
-            Fundo
+            Finance
           </h3>
         </div>
       </div>

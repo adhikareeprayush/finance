@@ -2,7 +2,12 @@ import { useState, useEffect } from "react";
 import { GoSidebarCollapse, GoSidebarExpand } from "react-icons/go";
 import { useSidebar } from "../../providers/SidebarProvider";
 import { Link } from "react-router-dom";
-import { MdFormatListBulleted, MdInsights, MdMoney } from "react-icons/md";
+import {
+  MdFormatListBulleted,
+  MdInsights,
+  MdMoney,
+  MdNewspaper,
+} from "react-icons/md";
 import { CgTranscript } from "react-icons/cg";
 import { FaCalculator } from "react-icons/fa";
 import { BsPieChartFill } from "react-icons/bs";
@@ -44,6 +49,12 @@ const navMenus = [
     icon: <BsPieChartFill />,
     url: "portfolios",
   },
+  {
+    id: 7,
+    label: "News",
+    icon: <MdNewspaper />,
+    url: "news",
+  },
 ];
 
 const Sidebar = () => {
@@ -63,6 +74,15 @@ const Sidebar = () => {
   const handleTransitionEnd = () => {
     setIsAnimating(false);
   };
+
+  useEffect(() => {
+    // Set the active menu based on the current URL path
+    const currentPath = window.location.pathname.split("/")[2];
+    const active = navMenus.find((menu) => menu.url === currentPath);
+    if (active) {
+      setActiveMenu(active.id);
+    }
+  }, []);
 
   return (
     <div

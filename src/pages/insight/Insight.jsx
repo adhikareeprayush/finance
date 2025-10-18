@@ -1,15 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../../components/reusable/Card";
 import { useSidebar } from "../../providers/SidebarProvider";
 import { BsArrowsAngleExpand, BsArrowsAngleContract } from "react-icons/bs";
+import { getCompanies } from "../../lib/companies/companies";
 
-const tabs = [
-  { id: 1, label: "Technology" },
-  { id: 2, label: "Finance" },
-  { id: 3, label: "Healthcare" },
-];
-
-const companiesdata = [
+const mockCompaniesData = [
   {
     id: 1,
     name: "NVIDIA Corporation",
@@ -110,12 +105,34 @@ const Insight = () => {
   const { isCollapsed } = useSidebar();
   const [activeTab, setActiveTab] = useState(1);
   const [expandCard, setExpandCard] = useState(false);
+  const [companiesData, setCompaniesData] = useState(mockCompaniesData);
+  const [tabs, setTabs] = useState([]);
+
+  useEffect(() => {
+    const fetchCompanies = async () => {
+      try {
+        const data = await getCompanies();
+        setCompaniesData(data.companies);
+        console.log(data.sectors);
+        setTabs(
+          data.sectors.map((sector, index) => ({
+            id: index + 1,
+            label: sector,
+          }))
+        );
+      } catch (error) {
+        console.error("Error fetching companies data:", error);
+      }
+    };
+
+    fetchCompanies();
+  }, []);
 
   // get the sector name of active tab
   const activeSector = tabs.find((t) => t.id === activeTab)?.label;
 
-  // filter companies by sector
-  const filteredCompanies = companiesdata.filter(
+  // filter companies based on active tab sector
+  const filteredCompanies = companiesData.filter(
     (company) => company.sector === activeSector
   );
 

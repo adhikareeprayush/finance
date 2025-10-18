@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import Graph from "../../components/reusable/Graphs/Graph";
 import GraphContainer from "../../components/reusable/Graphs/GraphContainer";
+import { useEffect } from "react";
+import { getCharts, getCompanyBySymbol } from "../../lib/companies/companies";
 
 const companiesdata = [
   {
@@ -110,6 +112,16 @@ const InsightPage = () => {
   if (!company) {
     return <div className="p-4">Company not found.</div>;
   }
+
+  useEffect(() => {
+    const getCompany = async () => {
+      const response = await getCompanyBySymbol(insightSymbol);
+      const charts = await getCharts(insightSymbol);
+      console.log("Charts data:", charts);
+      console.log("Company details:", response);
+    };
+    getCompany();
+  }, [insightSymbol]);
 
   return (
     <div className="flex flex-col gap-4">
