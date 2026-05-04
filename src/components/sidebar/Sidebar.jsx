@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { GoSidebarCollapse, GoSidebarExpand } from "react-icons/go";
 import { useSidebar } from "../../providers/SidebarProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   MdFormatListBulleted,
   MdInsights,
   MdMoney,
   MdNewspaper,
+  MdPerson,
+  MdHelpOutline,
 } from "react-icons/md";
 import { CgTranscript } from "react-icons/cg";
 import { FaCalculator } from "react-icons/fa";
@@ -55,12 +57,25 @@ const navMenus = [
     icon: <MdNewspaper />,
     url: "news",
   },
+  {
+    id: 8,
+    label: "Profile",
+    icon: <MdPerson />,
+    url: "profile",
+  },
+  {
+    id: 9,
+    label: "Help",
+    icon: <MdHelpOutline />,
+    url: "support",
+  },
 ];
 
 const Sidebar = () => {
   const { isCollapsed, toggleSidebar } = useSidebar();
   const [isAnimating, setIsAnimating] = useState(false);
   const [activeMenu, setActiveMenu] = useState(1);
+  const location = useLocation();
 
   useEffect(() => {
     if (isCollapsed !== undefined) {
@@ -76,13 +91,12 @@ const Sidebar = () => {
   };
 
   useEffect(() => {
-    // Set the active menu based on the current URL path
-    const currentPath = window.location.pathname.split("/")[2];
-    const active = navMenus.find((menu) => menu.url === currentPath);
+    const segment = location.pathname.split("/").filter(Boolean).pop();
+    const active = navMenus.find((menu) => menu.url === segment);
     if (active) {
       setActiveMenu(active.id);
     }
-  }, []);
+  }, [location.pathname]);
 
   return (
     <div
@@ -106,7 +120,7 @@ const Sidebar = () => {
             `}
           >
             <Link
-              to={menu.url}
+              to={`/dashboard/${menu.url}`}
               onClick={() => setActiveMenu(menu.id)}
               className={`flex items-center gap-2 w-full text-base justify-center
               ${!isCollapsed ? "justify-start" : "justify-center"}

@@ -45,9 +45,7 @@ const SignUp = () => {
       const response = await createUser(formData);
 
       // Update auth context
-      await login(response.user, {
-        token: response.token,
-      });
+      await login(response.user);
 
       // Redirect to intended page or dashboard
       const from = location.state?.from?.pathname || "/dashboard";
@@ -75,9 +73,21 @@ const SignUp = () => {
       </div>
       <div className="xl:col-span-2 lg:col-span-3 col-span-6 h-full px-6 py-8 bg-white flex flex-col justify-between">
         <div className="flex flex-col gap-5 w-full">
-          <div className="flex items-center gap-2">
-            <img src={ICONS.logo} alt="" className="size-12 object-contain" />
-            <h3 className="text-xl font-semibold text-dark">Finance</h3>
+          <div className="flex items-center justify-between gap-2 w-full">
+            <div className="flex items-center gap-2">
+              <img
+                src={ICONS.logo}
+                alt="LedgerLens logo"
+                className="size-12 object-contain"
+              />
+              <h3 className="text-xl font-semibold text-dark">LedgerLens</h3>
+            </div>
+            <Link
+              to="/"
+              className="text-xs font-semibold text-primary hover:underline shrink-0"
+            >
+              ← Home
+            </Link>
           </div>
           <div className="flex flex-col gap-4 w-full">
             <h3 className="text-xl font-semibold text-dark">
@@ -222,7 +232,7 @@ const SignUp = () => {
         </div>
         <div className="flex items-center justify-between">
           <p className="text-dark text-right text-xs tracking-wide">
-            @Finance 2025{" "}
+            © LedgerLens 2026
           </p>
         </div>
       </div>

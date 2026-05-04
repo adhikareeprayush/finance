@@ -13,17 +13,6 @@ import {
   getAuthToken,
 } from "../lib/auth/auth";
 
-// Helper function to check if token is a mock token
-const isMockToken = (token) => {
-  return (
-    token &&
-    (token.startsWith("mock-") ||
-      token === "mock_token" ||
-      token.includes("mock") ||
-      token.length < 50) // Mock tokens are usually shorter
-  );
-};
-
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -32,62 +21,6 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isInitialized, setIsInitialized] = useState(false);
 
-  // Initialize auth state
-  const initializeAuth = useCallback(async () => {
-    // Prevent multiple simultaneous initializations
-    if (isLoading && isInitialized) return;
-
-    setIsLoading(true);
-
-    try {
-      const token = getAuthToken();
-      if (!token) {
-        setIsAuthenticated(false);
-        setUser(null);
-        setIsInitialized(true);
-        return;
-      }
-
-      const authenticated = await checkAuthStatus();
-
-      if (authenticated) {
-        // For mock tokens, just set as authenticated without API call
-        if (isMockToken(token)) {
-          setUser({ id: "mock-user", email: "mock@example.com" });
-          setIsAuthenticated(true);
-        } else {
-          // Get user data for real tokens
-          try {
-            const userData = await getCurrentUser();
-            setUser(userData);
-            setIsAuthenticated(true);
-          } catch (error) {
-            console.error("Failed to get user data:", error);
-            await handleLogout();
-          }
-        }
-      } else {
-        setIsAuthenticated(false);
-        setUser(null);
-      }
-    } catch (error) {
-      console.error("Auth initialization failed:", error);
-      setIsAuthenticated(false);
-      setUser(null);
-    } finally {
-      setIsLoading(false);
-      setIsInitialized(true);
-    }
-  }, [isLoading, isInitialized]);
-
-  // Handle login
-  const login = useCallback(async (userData, tokens) => {
-    setUser(userData);
-    setIsAuthenticated(true);
-    setIsLoading(false);
-  }, []);
-
-  // Handle logout
   const handleLogout = useCallback(async () => {
     setIsLoading(true);
 
@@ -104,53 +37,70 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  // Listen for auth events from axios interceptor
-  useEffect(() => {
-    const handleAuthLogout = () => {
-      setUser(null);
+  const initializeAuth = useCallback(async () => {
+    setIsLoading(true);
+
+    try {
+      const token = getAuthToken();
+      if (!token) {
+        setIsAuthenticated(false);
+        setUser(null);
+        return;
+      }
+
+      const authenticated = await checkAuthStatus();
+
+      if (authenticated) {
+        try {
+          const userData = await getCurrentUser();
+          setUser(userData);
+          setIsAuthenticated(true);
+        } catch (error) {
+          console.error("Failed to get user data:", error);
+          await handleLogout();
+        }
+      } else {
+        setIsAuthenticated(false);
+        setUser(null);
+      }
+    } catch (error) {
+      console.error("Auth initialization failed:", error);
       setIsAuthenticated(false);
-    };
+      setUser(null);
+    } finally {
+      setIsLoading(false);
+      setIsInitialized(true);
+    }
+  }, [handleLogout]);
 
-    window.addEventListener("auth:logout", handleAuthLogout);
-
-    return () => {
-      window.removeEventListener("auth:logout", handleAuthLogout);
-    };
+  const login = useCallback(async (userData) => {
+    setUser(userData);
+    setIsAuthenticated(true);
+    setIsLoading(false);
   }, []);
 
-  // Initialize auth on mount
   useEffect(() => {
     if (!isInitialized) {
       initializeAuth();
     }
   }, [initializeAuth, isInitialized]);
 
-  // Periodic token validation (every 5 minutes) - Disabled for mock tokens
   useEffect(() => {
     if (!isAuthenticated) return;
-
-    const token = getAuthToken();
-    // Skip periodic validation for mock tokens
-    if (isMockToken(token)) return;
 
     const intervalId = setInterval(async () => {
       const authenticated = await checkAuthStatus();
       if (!authenticated) {
         await handleLogout();
       }
-    }, 5 * 60 * 1000); // 5 minutes
+    }, 5 * 60 * 1000);
 
     return () => clearInterval(intervalId);
   }, [isAuthenticated, handleLogout]);
 
-  // Handle tab visibility change - check auth when tab becomes visible
   useEffect(() => {
     const handleVisibilityChange = async () => {
       if (!document.hidden && isAuthenticated) {
-        const token = getAuthToken();
-        // Skip visibility validation for mock tokens
-        if (isMockToken(token)) return;
-
         const authenticated = await checkAuthStatus();
         if (!authenticated) {
           await handleLogout();

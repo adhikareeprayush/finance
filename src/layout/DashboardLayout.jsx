@@ -8,11 +8,11 @@ const DashboardLayout = () => {
   return (
     <SidebarProvider>
       <div className="flex flex-col h-screen overflow-hidden dark:bg-[#212121]">
-        {/* Top nav */}
+        {/* Top nav — z-50 so profile dropdown stacks above main/sidebar */}
         <Nav />
 
-        {/* Sidebar + Main Content */}
-        <div className="flex flex-1 overflow-hidden">
+        {/* Sidebar + Main Content — stays below nav overlay */}
+        <div className="relative z-0 flex flex-1 min-h-0 overflow-hidden">
           {/* Sidebar */}
           <Sidebar />
 

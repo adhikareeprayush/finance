@@ -2,14 +2,22 @@ import { ICONS } from "../../assets/Assets";
 import { useTheme } from "../../providers/ThemeProvider";
 import { IoMoon, IoSunny } from "react-icons/io5";
 import Dropdown from "../reusable/Dropdown";
-import { useState, useEffect, useRef } from "react";
-import SearchModal from "../reusable/SearchModal";
+import { useState, useEffect, useRef, useMemo } from "react";
+import { Link, useLocation } from "react-router-dom";
 import SearchInput from "../reusable/SearchInput";
+import { useAuth } from "../../providers/AuthProvider";
 
 const Nav = () => {
+  const location = useLocation();
+  const { user } = useAuth();
+  const avatarUrl = useMemo(
+    () =>
+      `https://picsum.photos/seed/${encodeURIComponent(user?.email || "ledgerlens")}/128/128`,
+    [user?.email]
+  );
+  const displayName = user?.name || "Prayush Adhikari";
   const { theme, toggleTheme } = useTheme();
   const [profileExpand, setProfileExpand] = useState(false);
-  const [searchModal, setSearchModal] = useState(false);
   const dropdownRef = useRef(null);
 
   // Click outside to close dropdown
@@ -28,13 +36,22 @@ const Nav = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [profileExpand]);
+
+  useEffect(() => {
+    setProfileExpand(false);
+  }, [location.pathname]);
+
   return (
-    <div className="w-full flex justify-between py-4 px-6 border-b-[1px] border-[#eaeaea] dark:border-neutral-800 dark:bg-[#181818] dark:text-neutral-300">
+    <div className="relative z-50 w-full flex justify-between py-4 px-6 border-b-[1px] border-[#eaeaea] dark:border-neutral-800 dark:bg-[#181818] dark:text-neutral-300 shrink-0 isolate">
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-2">
-          <img src={ICONS.logo} alt="" className="size-12 object-contain" />
+          <img
+            src={ICONS.logo}
+            alt="LedgerLens logo"
+            className="size-12 object-contain"
+          />
           <h3 className="text-xl font-semibold text-dark dark:text-white">
-            Finance
+            LedgerLens
           </h3>
         </div>
       </div>
@@ -46,7 +63,7 @@ const Nav = () => {
           {theme === "light" ? <IoMoon /> : <IoSunny />}
         </button>
         <div
-          className="relative flex items-center justify-center p-[1px] w-[42px] h-[42px] rounded-full bg-neutral-400 dark:border-neutral-800"
+          className="relative z-[60] flex items-center justify-center p-[1px] w-[42px] h-[42px] rounded-full bg-neutral-400 dark:border-neutral-800"
           ref={dropdownRef}
         >
           <button
@@ -56,36 +73,39 @@ const Nav = () => {
           >
             <img
               className="w-full rounded-full object-cover"
-              src="https://media.licdn.com/dms/image/v2/D4D03AQHZbAwM7Jmx2w/profile-displayphoto-crop_800_800/B4DZeYiIK3H4AI-/0/1750610773248?e=1761177600&v=beta&t=l15P5JMdzro1ljxsGuY4ClXT24KN8uM1j48MieivhdM"
+              src={avatarUrl}
               alt=""
             />
           </button>
           {profileExpand && (
             <Dropdown
               topMenu={
-                <div className="flex items-center gap-2 cursor-pointer overflow-hidden border-b-[1px] border-neutral-600 py-2">
+                <Link
+                  to="/dashboard/profile"
+                  className="flex items-center gap-2 cursor-pointer overflow-hidden border-b-[1px] border-neutral-600 py-2 no-underline text-inherit rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-700/50 -mx-1 px-1 transition-colors"
+                >
                   <img
-                    src="https://media.licdn.com/dms/image/v2/D4D03AQHZbAwM7Jmx2w/profile-displayphoto-crop_800_800/B4DZeYiIK3H4AI-/0/1750610773248?e=1761177600&v=beta&t=l15P5JMdzro1ljxsGuY4ClXT24KN8uM1j48MieivhdM"
+                    src={avatarUrl}
                     alt=""
                     className="size-10 rounded-full object-cover"
                   />
                   <div className="flex flex-col">
                     <span className="text-sm font-medium text-dark dark:text-white">
-                      Prayush Adhikari
+                      {displayName}
                     </span>
                     <span className="text-xs text-neutral-500 dark:text-neutral-400">
-                      View Profile
+                      View profile
                     </span>
                   </div>
-                </div>
+                </Link>
               }
               expand={profileExpand}
               menus={[
-                { label: "My Profile" },
-                { label: "Email Support" },
-                { label: "Terms and Use" },
+                { label: "My Profile", to: "/dashboard/profile" },
+                { label: "Help & support", to: "/dashboard/support" },
+                { label: "Terms of use", to: "/dashboard/terms" },
               ]}
-              position={"top-[60px] md:right-0 right-[-200px] lg:right-0"}
+              position={"top-[52px] right-0"}
               signOut
             />
           )}

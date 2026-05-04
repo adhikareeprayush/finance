@@ -1,38 +1,38 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import CompanyLogo from "./CompanyLogo";
 
 const Card = ({ company, expand }) => {
-  // optional local state if you want toggle animation on click
-  const [isExpanded, setIsExpanded] = useState(expand);
-
   return (
     <Link
       to={`/dashboard/insight/${company.symbol}`}
       className="rounded-2xl bg-neutral-100 dark:bg-neutral-800 py-3 px-4 flex flex-col gap-2 cursor-pointer"
-      onClick={(e) => {
-        // prevent navigation if you want to toggle expansion locally
-        // e.preventDefault();
-        // setIsExpanded(!isExpanded);
-      }}
     >
-      <div className="flex items-center gap-2">
+      <div className="relative h-24 w-full rounded-xl overflow-hidden mb-1">
         <img
+          src={company.coverImage}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+      </div>
+      <div className="flex items-center gap-2">
+        <CompanyLogo
           src={company.logo}
           alt={company.name}
-          className="size-12 rounded-full"
+          className="size-12 rounded-full ring-2 ring-white dark:ring-neutral-700"
         />
-        <div className="flex flex-col justify-between flex-1">
+        <div className="flex flex-col justify-between flex-1 min-w-0">
           <div className="flex flex-col">
-            <h5 className="font-semibold text-neutral-600 dark:text-neutral-200 uppercase">
+            <h5 className="font-semibold text-neutral-600 dark:text-neutral-200 uppercase truncate">
               {company.symbol}
             </h5>
-            <p className="text-sm text-neutral-400">{company.name}</p>
+            <p className="text-sm text-neutral-400 truncate">{company.name}</p>
           </div>
           <p className="text-sm text-neutral-400">
             Market Cap: {company.marketCap || "N/A"}
           </p>
         </div>
-        <div className="flex flex-col items-end">
+        <div className="flex flex-col items-end shrink-0">
           <p className="font-semibold dark:text-neutral-200 text-neutral-600">
             {company.price || "$0.00"}
           </p>
@@ -48,14 +48,13 @@ const Card = ({ company, expand }) => {
         </div>
       </div>
 
-      {/* Animated expansion */}
       <div
         className={`overflow-hidden transition-all duration-300 ease-in-out ${
           expand ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0 mt-0"
         } border-t-[1px] w-full border-neutral-700`}
       >
         <div className="py-2">
-          <p className="font-semibold dark:text-neutral-200 text-neutral-600   text-center w-full">
+          <p className="font-semibold dark:text-neutral-200 text-neutral-600 text-center w-full">
             Performance
           </p>
           <div className="grid grid-cols-3 gap-3 mt-2">

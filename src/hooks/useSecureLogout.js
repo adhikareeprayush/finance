@@ -18,11 +18,11 @@ export const useSecureLogout = () => {
       // queryClient.clear();
 
       // Navigate to login page
-      navigate("/", { replace: true });
+      navigate("/login", { replace: true });
     } catch (error) {
       console.error("Logout error:", error);
       // Even if logout fails, clear local state and redirect
-      navigate("/", { replace: true });
+      navigate("/login", { replace: true });
     }
   }, [logout, navigate]);
 

@@ -1,24 +1,3 @@
-import { Link } from "react-router-dom";
-
-const symbolStyles = [
-  {
-    color: "text-green-500",
-    bgColor: "bg-green-100/10",
-  },
-  {
-    color: "text-red-500",
-    bgColor: "bg-red-100/10",
-  },
-  {
-    color: "text-yellow-500",
-    bgColor: "bg-yellow-100/10",
-  },
-  {
-    color: "text-purple-500",
-    bgColor: "bg-purple-100/10",
-  },
-];
-
 const NewsCard = ({ news }) => {
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "short", day: "numeric" };
@@ -27,14 +6,16 @@ const NewsCard = ({ news }) => {
   };
 
   return (
-    <Link
-      to={`${news.url}`}
+    <a
+      href={news.url}
+      target="_blank"
+      rel="noopener noreferrer"
       className="flex items-start dark:bg-dark border-gray-200 shadow-xs dark:border-black/80 border-[1px] flex-col dark:text-white bg-white/40 rounded-b-lg gap-2"
     >
       <img
         src={news.image}
         className="h-[150px] w-full object-cover brightness-75"
-        alt=""
+        alt={news.headline}
       />
       <div className="flex item-start px-3 pb-2 flex-col gap-2  justify-between h-full bg-red">
         <div className="flex flex-col">
@@ -52,7 +33,7 @@ const NewsCard = ({ news }) => {
           </div>
         </div>
       </div>
-    </Link>
+    </a>
   );
 };
 

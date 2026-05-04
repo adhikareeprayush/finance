@@ -70,14 +70,20 @@ const DCF = () => {
 
   return (
     <div className="flex flex-col gap-6 max-w-6xl mx-auto p-4">
-      {/* Header */}
-      <div className="text-center">
-        <h1 className="text-3xl font-bold dark:text-white mb-2">
-          DCF Calculator
-        </h1>
-        <p className="text-gray-900 dark:text-gray-400">
-          Discounted Cash Flow Valuation Model
-        </p>
+      <div className="relative h-36 rounded-xl overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 to-black/30 flex flex-col justify-center px-6 md:px-10">
+          <h1 className="text-2xl md:text-3xl font-bold text-white drop-shadow">
+            DCF Calculator
+          </h1>
+          <p className="text-white/90 text-sm md:text-base mt-1">
+            Discounted cash flow valuation — all math runs in your browser.
+          </p>
+        </div>
       </div>
 
       {/* Input Form */}
