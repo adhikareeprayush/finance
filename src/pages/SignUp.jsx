@@ -78,7 +78,7 @@ const SignUp = () => {
               <img
                 src={ICONS.logo}
                 alt="LedgerLens logo"
-                className="size-12 object-contain"
+                className="size-12 shrink-0 rounded-xl object-contain shadow-lg shadow-neutral-900/10 ring-1 ring-black/10"
               />
               <h3 className="text-xl font-semibold text-dark">LedgerLens</h3>
             </div>

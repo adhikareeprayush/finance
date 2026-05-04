@@ -7,10 +7,7 @@
     </linearGradient>
   </defs>
   <rect width="48" height="48" rx="11" fill="url(#ll-fill)"/>
-  <!-- Ledger lines -->
   <path d="M11 15h15M11 21h11M11 27h13" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" opacity="0.94"/>
-  <!-- Lens ring -->
   <circle cx="31.5" cy="30" r="9.5" stroke="#ffffff" stroke-width="2.35" opacity="0.96"/>
-  <!-- Mini uptrend inside lens -->
   <path d="M26 32l3.2-3.5 3 2.3 5.3-6.2" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

@@ -2,9 +2,14 @@
 @import "tailwindcss";
 @custom-variant dark (&:is(.dark *));
 
-body,
+/* Allow vertical document scroll (e.g. landing page). Dashboard scroll lives in main overflow-y-auto. */
 html {
-  overflow: hidden;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
   font-family: "Poppins", sans-serif;
 }
 

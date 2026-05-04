@@ -6,7 +6,11 @@ const TermsPublic = () => (
   <div className="min-h-screen bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
     <header className="border-b border-neutral-200 dark:border-neutral-800 px-4 py-4 flex items-center justify-between max-w-6xl mx-auto">
       <Link to="/" className="flex items-center gap-2 font-semibold">
-        <img src={ICONS.logo} alt="" className="size-9 object-contain" />
+        <img
+          src={ICONS.logo}
+          alt=""
+          className="size-9 shrink-0 rounded-lg object-contain shadow-md ring-1 ring-black/10"
+        />
         LedgerLens
       </Link>
       <Link

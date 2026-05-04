@@ -48,7 +48,7 @@ const Nav = () => {
           <img
             src={ICONS.logo}
             alt="LedgerLens logo"
-            className="size-12 object-contain"
+            className="size-11 shrink-0 rounded-xl object-contain shadow-md shadow-black/10 ring-1 ring-black/10 dark:shadow-black/40 dark:ring-white/10"
           />
           <h3 className="text-xl font-semibold text-dark dark:text-white">
             LedgerLens
